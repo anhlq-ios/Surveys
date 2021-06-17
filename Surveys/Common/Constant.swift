@@ -22,3 +22,9 @@ enum Constant {
     static let clientID = "ofzl-2h5ympKa0WqqTzqlVJUiRsxmXQmt5tkgrlWnOE"
     static let clientSecret = "lMQb900L-mTeU-FVTCwyhjsfBwRCxwwbCitPob96cuU"
 }
+
+enum ImageName {
+    static let logo = "logo"
+    static let backgroundImage = "background_image"
+    static let backgroundOverlay = "background_overlay"
+}

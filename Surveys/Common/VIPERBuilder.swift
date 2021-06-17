@@ -20,4 +20,15 @@ final class VIPERBuilder {
 //        interactor.presenter = presenter
         return UINavigationController(rootViewController: view)
     }
+    
+    static func buildSplash() -> UIViewController {
+        let view = SplashScreenViewController.initialInstantiate()
+//        let interactor = CryptoListInteractor()
+//        let router = CryptoListRouter(view: view)
+//        let presenter = CryptoListPresenter(view: view,
+//                                            interactor: interactor,
+//                                            router: router)
+//        interactor.presenter = presenter
+        return view
+    }
 }

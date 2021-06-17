@@ -8,23 +8,27 @@
 import Foundation
 import Alamofire
 
-protocol LoginServiceType {
+protocol LoginServiceType: BaseServiceType {
     func login(email: String, password: String)
 }
 
 class LoginService: LoginServiceType {
-    static let shared = LoginService()
     
-    private init() {}
+    static let shared = LoginService(alamofireManager: AlamofireManager.shared)
+    
+    let alamofireManger: AlamofireManager
+    private init(alamofireManager: AlamofireManager) {
+        self.alamofireManger = alamofireManager
+    }
     
     func login(email: String, password: String) {
-        let target = LoginTargets.Login(email: email, password: password)
-        AF.request(target.fullUrl,
-                   method: target.httpMethod,
-                   parameters: target.parameters,
-                   encoder: target.parameterEncoder,
-                   headers: target.headers).response { data in
-                    print(data)
-                   }
+        let onSusscess: ((LoginResponse) -> Void) = { loginResponse in
+            print(loginResponse)
+        }
+        let onError: ((Error) -> Void) = { error in
+            print(error.localizedDescription)
+        }
+        let request = LoginTargets.Login(email: email, password: password)
+        alamofireManger.request(for: LoginResponse.self, request: request, parameters: request.parameters, onSucess: onSusscess, onError: onError)
     }
 }
