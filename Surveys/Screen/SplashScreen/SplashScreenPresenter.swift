@@ -6,3 +6,22 @@
 //
 
 import Foundation
+
+protocol SplashScreenPresenable: Presentable {
+    func didEndAminated()
+}
+
+final class SplashScreenPresenter: SplashScreenPresenable {
+    private let view: SplashScreenViewable!
+    private let router: SplashScreenRoutable
+    
+    init(view: SplashScreenViewable, router: SplashScreenRoutable) {
+        self.view = view
+        self.router = router
+        view.presenter = self
+    }
+    
+    func didEndAminated() {
+        router.routeToLogin()
+    }
+}
