@@ -21,7 +21,7 @@ protocol BaseTarget {
 
 extension BaseTarget {
     var baseUrl: String { Constant.baseUrl }
-    var headers: HTTPHeaders { [.accept("appilication/json")] }
+    var headers: HTTPHeaders { [] }
     var fullUrl: String { return baseUrl + path }
 }
 

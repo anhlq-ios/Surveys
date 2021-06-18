@@ -9,5 +9,6 @@ import Foundation
 import Alamofire
 
 protocol BaseServiceType {
-    var alamofireManger: AlamofireManager { get }
+    var alamofireManger: AlamofireManagerType { get }
+    var keychainManager: KeychainManagerType { get }
 }

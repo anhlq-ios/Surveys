@@ -50,8 +50,9 @@ final class AlamofireManager: AlamofireManagerType {
                                     onError(error)
                                 }
                             case .failure(let error):
-                                
-                                print(error.localizedDescription)
+                                #if DEBUG
+                                AlamofireManager.debugError(error)
+                                #endif
                                 onError(error)
                             }
                           })
@@ -68,5 +69,11 @@ final class AlamofireManager: AlamofireManagerType {
         print(#file, #function, "\n")
         print("Request: {url: \(urlRequest.fullUrl)}")
         print("Request Detail: {\(detail)}")
+    }
+    
+    static private func debugError(_ error: Error) {
+        if let afError = error as? AFError {
+            print("Status Code: \(afError.responseCode ?? 0)")
+        }
     }
 }

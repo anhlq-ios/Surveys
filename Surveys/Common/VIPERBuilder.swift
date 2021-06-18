@@ -12,20 +12,19 @@ final class VIPERBuilder {
     
     static func buildLogin() -> UIViewController {
         let view = LoginViewController.initialInstantiate()
-//        let interactor = CryptoListInteractor()
-//        let router = CryptoListRouter(view: view)
-//        let presenter = CryptoListPresenter(view: view,
-//                                            interactor: interactor,
-//                                            router: router)
-//        interactor.presenter = presenter
+        let interactor = LoginInteractor(loginService: LoginService.shared)
+        let router = LoginRouter(view: view)
+        let presenter = LoginPresenter(view: view,
+                                            interactor: interactor,
+                                            router: router)
+        interactor.presenter = presenter
         return view
     }
     
     static func buildSplash() -> UIViewController {
         let view = SplashScreenViewController.initialInstantiate()
         let router = SplashScreenRouter(view: view)
-        let presenter = SplashScreenPresenter(view: view,
-                                            router: router)
+        _ = SplashScreenPresenter(view: view, router: router)
         return view
     }
 }

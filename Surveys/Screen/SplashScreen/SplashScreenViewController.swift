@@ -10,6 +10,7 @@ import UIKit
 protocol SplashScreenViewable: Viewable {
     var presenter: SplashScreenPresenable! { get set }
 }
+
 final class SplashScreenViewController: UIViewController, SplashScreenViewable {
     var presenter: SplashScreenPresenable!
 

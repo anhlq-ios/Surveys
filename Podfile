@@ -10,6 +10,7 @@ target 'Surveys' do
   pod 'RxCocoa', '6.2.0'
   pod 'SkeletonView', '1.15.0'
   pod 'Alamofire', '5.4.3'
+  pod 'KeychainAccess', '4.2.2'
   
   target 'SurveysTests' do
     inherit! :search_paths

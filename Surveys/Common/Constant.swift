@@ -6,9 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
-enum UserDefaultKeys {
-    static let favoritesCryptoList = "favoritesCryptoList"
+enum KeychainKeys {
+    static let userName = "user_name"
+    static let password = "password"
+    static let accessToken = "access_token"
+    static let refreshToken = "refresh_token"
 }
 
 enum ColorName {
@@ -23,8 +27,9 @@ enum Constant {
     static let clientSecret = "lMQb900L-mTeU-FVTCwyhjsfBwRCxwwbCitPob96cuU"
 }
 
-enum ImageName {
-    static let logo = "logo"
-    static let backgroundImage = "background_image"
-    static let backgroundOverlay = "background_overlay"
+enum Images {
+    static let logo = UIImage(named:"logo")
+    static let backgroundImage = UIImage(named:"background_image")
+    static let backgroundOverlay = UIImage(named:"background_overlay")
+    static let loginBackground = UIImage(named:"login_background_overlay")
 }

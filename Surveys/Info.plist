@@ -41,5 +41,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NeuzeitSLTStd-Regular.ttf</string>
+		<string>NeuzeitSLTStd-BookHeavy.otf</string>
+		<string>NeuzeitSLTStd-Book.otf</string>
+	</array>
 </dict>
 </plist>
