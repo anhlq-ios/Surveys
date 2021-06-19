@@ -25,6 +25,14 @@ extension BaseTarget {
     var fullUrl: String { return baseUrl + path }
 }
 
+protocol BaseAuthenticateTarget: BaseTarget {
+    
+}
+
+extension BaseAuthenticateTarget {
+    var headers: HTTPHeaders { [HTTPHeader.authorization(bearerToken: KeychainManager.shared.getValue(for: KeychainKeys.accessToken) ?? "")] }
+}
+
 protocol BaseInput: Encodable {
     var clientId: String { get }
     var clientSecret: String { get }

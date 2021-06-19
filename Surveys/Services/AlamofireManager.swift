@@ -16,6 +16,14 @@ protocol AlamofireManagerType {
                                     parameters: ParamType?,
                                     onSucess: @escaping ((Output) -> Void),
                                     onError: @escaping ((Error) -> Void))
+    
+    func authenticateRequest<RequestType: BaseAuthenticateTarget,
+                             ParamType: Encodable,
+                             Output: Decodable>(for type: Output.Type,
+                                                request: RequestType,
+                                                parameters: ParamType?,
+                                                onSucess: @escaping ((Output) -> Void),
+                                                onError: @escaping ((Error) -> Void))
 }
 
 final class AlamofireManager: AlamofireManagerType {
@@ -58,6 +66,44 @@ final class AlamofireManager: AlamofireManagerType {
                           })
     }
     
+    func authenticateRequest<RequestType: BaseAuthenticateTarget,
+                             ParamType: Encodable,
+                             Output: Decodable>(for type: Output.Type,
+                                                request: RequestType,
+                                                parameters: ParamType?,
+                                                onSucess: @escaping ((Output) -> Void),
+                                                onError: @escaping ((Error) -> Void)) {
+        #if DEBUG
+        AlamofireManager.debugRequest(with: request)
+        #endif
+        AF.request(request.fullUrl,
+                   method: request.httpMethod,
+                   parameters: parameters,
+                   encoder: request.parameterEncoder,
+                   headers: request.headers)
+            .validate()
+            .responseData(queue: DispatchQueue.global(qos: .userInitiated),
+                          completionHandler: { response in
+                            switch response.result {
+                            case .success(let data):
+                                do {
+                                    let obj = try JSONDecoder().decode(Output.self, from: data)
+                                    onSucess(obj)
+                                } catch let error {
+                                    onError(error)
+                                }
+                            case .failure(let error):
+                                #if DEBUG
+                                AlamofireManager.debugError(error)
+                                #endif
+                                onError(error)
+                            }
+                          })
+    }
+}
+
+// MARK: - Private functions
+extension AlamofireManager {
     static private func debugRequest<Request: BaseTarget>(with urlRequest: Request) {
         let details: [String] = [
             "path: \(urlRequest.path)",

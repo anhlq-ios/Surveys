@@ -7,5 +7,5 @@
 
 import Foundation
 
-protocol Interactable: class {
+protocol Interactable: AnyObject {
 }

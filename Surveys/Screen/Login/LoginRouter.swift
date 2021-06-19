@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginRoutable: Routable {
     func showAlert(title: String?, message: String?)
+    func routeToSurveyList()
 }
 
 final class LoginRouter: LoginRoutable {
@@ -27,6 +28,13 @@ final class LoginRouter: LoginRoutable {
             }
             alert.addAction(action)
             view?.present(alert, animated: true)
+        }
+    }
+    
+    func routeToSurveyList() {
+        DispatchQueue.main.async { [weak self] in
+            let surveyList = VIPERBuilder.buildSurveyList()
+            self?.view.push(surveyList, animated: true)
         }
     }
 }

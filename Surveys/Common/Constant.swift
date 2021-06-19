@@ -32,4 +32,11 @@ enum Images {
     static let backgroundImage = UIImage(named:"background_image")
     static let backgroundOverlay = UIImage(named:"background_overlay")
     static let loginBackground = UIImage(named:"login_background_overlay")
+    static let arrowRight = UIImage(named: "arrow_right")
+}
+
+enum FontName {
+    static let neuzeitBookRegular = "NeuzeitSLT-Book"
+    static let neuzeitBookStandard = "NeuzeitSLTStd-Book"
+    static let neuzeitBookHeavy = "NeuzeitSLTStd-BookHeavy"
 }

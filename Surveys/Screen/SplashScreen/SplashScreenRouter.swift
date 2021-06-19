@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SplashScreenRoutable: Routable {
     func routeToLogin()
@@ -21,7 +22,8 @@ final class SplashScreenRouter: SplashScreenRoutable {
     func routeToLogin() {
         self.dismiss(animated: false)
         let login = VIPERBuilder.buildLogin()
-        UIApplication.shared.keyWindow?.rootViewController = login
+        let navigationController = UINavigationController(rootViewController: login)
+        UIApplication.shared.keyWindow?.rootViewController = navigationController
         UIApplication.shared.keyWindow?.makeKeyAndVisible()
     }
 }

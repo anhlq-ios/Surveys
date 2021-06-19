@@ -11,6 +11,8 @@ target 'Surveys' do
   pod 'SkeletonView', '1.15.0'
   pod 'Alamofire', '5.4.3'
   pod 'KeychainAccess', '4.2.2'
+  pod 'SnapKit', '5.0.1'
+  pod 'Kingfisher', '6.3.0'
   
   target 'SurveysTests' do
     inherit! :search_paths

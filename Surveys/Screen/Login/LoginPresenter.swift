@@ -53,21 +53,26 @@ final class LoginPresenter: LoginPresentable, LoginInteractableListener {
         let loginInput = Observable.combineLatest(emailRelay, passwordRelay)
         loginTapRelay.withLatestFrom(loginInput)
             .subscribe(onNext: { [weak self] (email, password) in
+                self?.view.isShowLoading.accept(true)
                 self?.interactor.login(email: email, password: password)
             }).disposed(by: disposeBag)
+        
+        viewDidLoadRelay.subscribe(onNext: { [weak self] in
+            self?.view.isShowLoading.accept(true)
+            self?.interactor.loginAutomated()
+        }).disposed(by: disposeBag)
     }
 }
 
 // MARK: - LoginInteractableListener
 extension LoginPresenter {
     func onLoginSuccess() {
-        print("Login success")
-        print(KeychainManager.shared.getValue(for: KeychainKeys.accessToken))
-        print(KeychainManager.shared.getValue(for: KeychainKeys.refreshToken))
-        router.showAlert(title: "Login succeed", message: "Congratulation!")
+        view.isShowLoading.accept(false)
+        router.routeToSurveyList()
     }
     
     func onLoginError(_ error: Error) {
+        view.isShowLoading.accept(false)
         print(error.localizedDescription)
         router.showAlert(title: "Login failed", message: "An error ocurred, please retry again!")
     }

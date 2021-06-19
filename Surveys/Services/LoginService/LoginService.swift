@@ -22,7 +22,7 @@ class LoginService: LoginServiceType {
     static let shared = LoginService(alamofireManager: AlamofireManager.shared, keychainManager: KeychainManager.shared)
     
     let alamofireManger: AlamofireManagerType
-    let keychainManager: KeychainManagerType
+    private let keychainManager: KeychainManagerType
     
     private init(alamofireManager: AlamofireManagerType,
                  keychainManager: KeychainManagerType) {
@@ -32,6 +32,7 @@ class LoginService: LoginServiceType {
     
     func login(email: String, password: String, completion: ((LoginError?) -> Void)?) {
         let onSusscess: ((LoginResponse) -> Void) = { [weak self] loginResponse in
+            self?.saveLoginInfo(email: email, password: password)
             self?.handleLoginResponse(loginResponse, completion: completion)
         }
         let onError: ((Error) -> Void) = { error in
@@ -49,5 +50,10 @@ class LoginService: LoginServiceType {
         keychainManager.set(value: accessToken, for: KeychainKeys.accessToken)
         keychainManager.set(value: refreshToken, for: KeychainKeys.refreshToken)
         completion?(nil)
+    }
+    
+    private func saveLoginInfo(email: String, password: String) {
+        keychainManager.set(value: email, for: KeychainKeys.userName)
+        keychainManager.set(value: password, for: KeychainKeys.password)
     }
 }
