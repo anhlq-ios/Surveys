@@ -22,22 +22,25 @@ final class SurveyListViewController: UIViewController, SurveyListViewable {
     let isShowLoading = BehaviorRelay<Bool>(value: false)
     let viewModel = BehaviorRelay<SurveyViewModel?>(value: nil)
     
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var todayLabel: UILabel!
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var detailButton: UIButton!
-    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var todayLabel: UILabel!
+    @IBOutlet private weak var pageControl: UIPageControl!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var detailButton: UIButton!
+    @IBOutlet private weak var coverImageView: UIImageView!
     
     private let disposeBag = DisposeBag()
     private lazy var swipeRightGesture: UISwipeGestureRecognizer = {
         let gesture = makeSwipeGesture(.right)
         return gesture
     }()
-    
     private lazy var swipeLeftGesture: UISwipeGestureRecognizer = {
         let gesture = makeSwipeGesture(.left)
+        return gesture
+    }()
+    private lazy var swipeDownGesture: UISwipeGestureRecognizer = {
+        let gesture = makeSwipeGesture(.down)
         return gesture
     }()
     
@@ -54,6 +57,8 @@ final class SurveyListViewController: UIViewController, SurveyListViewable {
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     
     private func configureView() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        
         SkeletonAppearance.default.multilineCornerRadius = 8
 
         view.backgroundColor = .darkText
@@ -81,6 +86,7 @@ final class SurveyListViewController: UIViewController, SurveyListViewable {
         
         view.addGestureRecognizer(swipeRightGesture)
         view.addGestureRecognizer(swipeLeftGesture)
+        view.addGestureRecognizer(swipeDownGesture)
     }
     
     private func configurePresenter() {
@@ -121,6 +127,8 @@ final class SurveyListViewController: UIViewController, SurveyListViewable {
         switch gesture.direction {
         case .right, .left:
             presenter.swipeDirection.accept(gesture.direction)
+        case .down:
+            presenter.refreshRelay.accept(())
         default:
             return
         }

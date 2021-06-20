@@ -13,7 +13,7 @@ protocol SplashScreenRoutable: Routable {
 }
 
 final class SplashScreenRouter: SplashScreenRoutable {
-    var view: Viewable!
+    unowned var view: Viewable
     
     init(view: Viewable) {
         self.view = view
@@ -24,6 +24,5 @@ final class SplashScreenRouter: SplashScreenRoutable {
         let login = VIPERBuilder.buildLogin()
         let navigationController = UINavigationController(rootViewController: login)
         UIApplication.shared.keyWindow?.rootViewController = navigationController
-        UIApplication.shared.keyWindow?.makeKeyAndVisible()
     }
 }

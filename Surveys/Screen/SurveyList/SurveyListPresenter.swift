@@ -20,11 +20,12 @@ protocol SurveyListPresentable: Presentable {
     var viewDidLoadRelay: PublishRelay<Void> { get }
     var swipeDirection: PublishRelay<UISwipeGestureRecognizer.Direction> { get }
     var detailButtonTapped: PublishRelay<Void> { get }
+    var refreshRelay: PublishRelay<Void> { get }
 }
 
 final class SurveyListPresenter: SurveyListPresentable, SurveyListInteractableListener {
     
-    private let view: SurveyListViewable!
+    private weak var view: SurveyListViewable!
     private let interactor: SurveyListInteractable
     private let router: SurveyListRoutable
     private let disposeBag = DisposeBag()
@@ -36,6 +37,7 @@ final class SurveyListPresenter: SurveyListPresentable, SurveyListInteractableLi
     let viewDidLoadRelay = PublishRelay<Void>()
     let swipeDirection = PublishRelay<UISwipeGestureRecognizer.Direction>()
     let detailButtonTapped = PublishRelay<Void>()
+    let refreshRelay = PublishRelay<Void>()
     
     init(view: SurveyListViewable, interactor: SurveyListInteractable, router: SurveyListRoutable) {
         self.view = view
@@ -45,6 +47,10 @@ final class SurveyListPresenter: SurveyListPresentable, SurveyListInteractableLi
         interactor.presenter = self
         
         configurePresenter()
+    }
+    
+    deinit {
+        print("\(Self.self) is deinit")
     }
     
     private func configurePresenter() {
@@ -68,10 +74,11 @@ final class SurveyListPresenter: SurveyListPresentable, SurveyListInteractableLi
     }
     
     private func configureInteractor() {
-        viewDidLoadRelay.subscribe(onNext: { [weak self] in
-            self?.view.isShowLoading.accept(true)
-            self?.interactor.getSurveyList()
-        }).disposed(by: disposeBag)
+        Observable.merge(viewDidLoadRelay.asObservable(), refreshRelay.asObservable())
+            .subscribe(onNext: { [weak self] in
+                self?.view.isShowLoading.accept(true)
+                self?.interactor.getSurveyList()
+            }).disposed(by: disposeBag)
         
         swipeDirection.subscribe(onNext: { [weak self] direction in
             self?.handleSwipe(to: direction)

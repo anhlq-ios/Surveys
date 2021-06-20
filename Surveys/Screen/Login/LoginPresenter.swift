@@ -16,7 +16,7 @@ protocol LoginPresentable: Presentable {
 
 final class LoginPresenter: LoginPresentable, LoginInteractableListener {
     
-    private let view: LoginViewable!
+    private weak var view: LoginViewable!
     private let interactor: LoginInteractable
     private let router: LoginRoutable
     private let disposeBag = DisposeBag()

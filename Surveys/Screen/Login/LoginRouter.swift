@@ -14,7 +14,7 @@ protocol LoginRoutable: Routable {
 }
 
 final class LoginRouter: LoginRoutable {
-    var view: Viewable!
+    unowned var view: Viewable
     
     init(view: Viewable) {
         self.view = view
@@ -32,9 +32,10 @@ final class LoginRouter: LoginRoutable {
     }
     
     func routeToSurveyList() {
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async {
             let surveyList = VIPERBuilder.buildSurveyList()
-            self?.view.push(surveyList, animated: true)
+            let navigationController = UINavigationController(rootViewController: surveyList)
+            UIApplication.shared.keyWindow?.rootViewController = navigationController
         }
     }
 }

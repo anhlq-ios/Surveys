@@ -19,11 +19,9 @@ enum SurveyListError: Error {
 
 class SurveyService: SurveyServiceType {
     
-    static let shared = SurveyService(alamofireManager: AlamofireManager.shared)
-    
     let alamofireManger: AlamofireManagerType
     
-    private init(alamofireManager: AlamofireManagerType) {
+    init(alamofireManager: AlamofireManagerType) {
         self.alamofireManger = alamofireManager
     }
     

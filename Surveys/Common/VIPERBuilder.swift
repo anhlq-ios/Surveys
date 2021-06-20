@@ -11,8 +11,9 @@ import UIKit
 final class VIPERBuilder {
     
     static func buildLogin() -> UIViewController {
+        let service = LoginService(alamofireManager: AlamofireManager.shared, keychainManager: KeychainManager.shared)
         let view = LoginViewController.initialInstantiate()
-        let interactor = LoginInteractor(loginService: LoginService.shared,
+        let interactor = LoginInteractor(loginService: service,
                                          keychainManger: KeychainManager.shared)
         let router = LoginRouter(view: view)
         let presenter = LoginPresenter(view: view,
@@ -30,8 +31,9 @@ final class VIPERBuilder {
     }
     
     static func buildSurveyList() -> UIViewController {
+        let service = SurveyService(alamofireManager: AlamofireManager.shared)
         let view = SurveyListViewController.initialInstantiate()
-        let interactor = SurveyListInteractor(surveyService: SurveyService.shared)
+        let interactor = SurveyListInteractor(surveyService: service)
         let router = SurveyListRouter(view: view)
         let presenter = SurveyListPresenter(view: view,
                                             interactor: interactor,

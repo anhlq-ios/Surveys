@@ -12,7 +12,7 @@ protocol SplashScreenPresenable: Presentable {
 }
 
 final class SplashScreenPresenter: SplashScreenPresenable {
-    private let view: SplashScreenViewable!
+    private unowned var view: SplashScreenViewable
     private let router: SplashScreenRoutable
     
     init(view: SplashScreenViewable, router: SplashScreenRoutable) {

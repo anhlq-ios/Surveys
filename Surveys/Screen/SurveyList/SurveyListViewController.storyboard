@@ -19,6 +19,10 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k4T-P5-bIt">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feI-R1-CMM">
                                 <rect key="frame" x="20" y="72" width="374" height="61"/>
@@ -134,7 +138,7 @@
                             <constraint firstAttribute="bottom" secondItem="k4T-P5-bIt" secondAttribute="bottom" id="GmV-9t-nLe"/>
                             <constraint firstItem="feI-R1-CMM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="IkT-0q-ucO"/>
                             <constraint firstItem="feI-R1-CMM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="28" id="RK3-UW-CVC"/>
-                            <constraint firstItem="Sxe-3g-fue" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="-20" id="SLc-TM-Sli"/>
+                            <constraint firstItem="Sxe-3g-fue" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottom" constant="-54" id="SLc-TM-Sli"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Sxe-3g-fue" secondAttribute="trailing" constant="20" id="Tsj-8W-isj"/>
                             <constraint firstItem="feI-R1-CMM" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-20" id="ZhP-Ve-Mbj"/>
                             <constraint firstItem="Sxe-3g-fue" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="gqR-Gz-miz"/>

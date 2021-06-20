@@ -19,13 +19,11 @@ enum LoginError: Error {
 
 class LoginService: LoginServiceType {
     
-    static let shared = LoginService(alamofireManager: AlamofireManager.shared, keychainManager: KeychainManager.shared)
-    
     let alamofireManger: AlamofireManagerType
     private let keychainManager: KeychainManagerType
     
-    private init(alamofireManager: AlamofireManagerType,
-                 keychainManager: KeychainManagerType) {
+    init(alamofireManager: AlamofireManagerType,
+         keychainManager: KeychainManagerType) {
         self.alamofireManger = alamofireManager
         self.keychainManager = keychainManager
     }

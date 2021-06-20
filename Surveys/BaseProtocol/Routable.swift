@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-protocol Routable: class {
-    var view: Viewable! { get }
+protocol Routable: AnyObject {
+    var view: Viewable { get }
 
     func dismiss(animated: Bool)
     func dismiss(animated: Bool, completion: @escaping (() -> Void))

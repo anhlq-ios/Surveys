@@ -12,7 +12,7 @@ protocol SurveyListRoutable: Routable {
 }
 
 final class SurveyListRouter: SurveyListRoutable {
-    var view: Viewable!
+    unowned var view: Viewable
     
     init(view: Viewable) {
         self.view = view

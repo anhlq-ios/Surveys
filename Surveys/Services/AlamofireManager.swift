@@ -81,6 +81,7 @@ final class AlamofireManager: AlamofireManagerType {
                    parameters: parameters,
                    encoder: request.parameterEncoder,
                    headers: request.headers)
+            .cacheResponse(using: ResponseCacher.cache)
             .validate()
             .responseData(queue: DispatchQueue.global(qos: .userInitiated),
                           completionHandler: { response in
