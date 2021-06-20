@@ -48,4 +48,22 @@ enum LoginTargets {
         let email: String
         let password: String
     }
+    
+    struct RefreshToken: BaseTarget {
+        
+        typealias T = [String: String]
+        var parameters: T? {
+            return ["grant_type": "refresh_token",
+                    "refresh_token": KeychainManager.shared.getValue(for: KeychainKeys.refreshToken) ?? "",
+                    "client_id": Constant.clientID,
+                    "client_secrect": Constant.clientSecret
+            ]
+        }
+        
+        var httpMethod: HTTPMethod = .post
+        
+        var path: String { return "/api/v1/oauth/token" }
+
+        let parameterEncoder: ParameterEncoder = URLEncodedFormParameterEncoder(destination: .httpBody)
+    }
 }

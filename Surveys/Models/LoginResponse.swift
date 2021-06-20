@@ -12,12 +12,14 @@ struct LoginResponse: Decodable {
     let tokenType: String?
     let expriresIn: Int?
     let refreshToken: String?
+    let createdAt: Date?
     
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"
         case tokenType = "token_type"
         case expiresIn = "expries_in"
         case refreshToken = "refresh_token"
+        case createdAt = "created_at"
     }
     enum AttributesCodingKeys: String, CodingKey {
         case attributes
@@ -34,5 +36,8 @@ struct LoginResponse: Decodable {
         tokenType = try subcontainer.decodeIfPresent(String.self, forKey: .tokenType)
         expriresIn = try subcontainer.decodeIfPresent(Int.self, forKey: .expiresIn)
         refreshToken = try subcontainer.decodeIfPresent(String.self, forKey: .refreshToken)
+        if let createdAtDouble = try subcontainer.decodeIfPresent(Double.self, forKey: .createdAt) {
+            createdAt = Date(timeIntervalSince1970: createdAtDouble)
+        } else { createdAt = Date() }
     }
 }

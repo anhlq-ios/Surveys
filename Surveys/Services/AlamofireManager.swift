@@ -84,7 +84,7 @@ final class AlamofireManager: AlamofireManagerType {
             .cacheResponse(using: ResponseCacher.cache)
             .validate()
             .responseData(queue: DispatchQueue.global(qos: .userInitiated),
-                          completionHandler: { response in
+                          completionHandler: { [weak self] response in
                             switch response.result {
                             case .success(let data):
                                 do {
@@ -97,7 +97,20 @@ final class AlamofireManager: AlamofireManagerType {
                                 #if DEBUG
                                 AlamofireManager.debugError(error)
                                 #endif
-                                onError(error)
+                                
+                                if error.responseCode == 401 {
+                                    /// Handle automated update access token here.
+                                    self?.refreshTokenRequest(onSucess: {
+                                        self?.request(for: type, request: request, parameters: parameters, onSucess: onSucess, onError: onError)
+                                    }, onError: { refreshTokenError in
+                                        #if DEBUG
+                                        AlamofireManager.debugError(refreshTokenError)
+                                        #endif
+                                        onError(error)
+                                    })
+                                } else {
+                                    onError(error)
+                                }
                             }
                           })
     }
@@ -121,6 +134,16 @@ extension AlamofireManager {
     static private func debugError(_ error: Error) {
         if let afError = error as? AFError {
             print("Status Code: \(afError.responseCode ?? 0)")
+        }
+    }
+    
+    private func refreshTokenRequest(onSucess: @escaping () -> Void, onError: @escaping  ((Error) -> Void)) {
+        let refreshRequest = LoginTargets.RefreshToken()
+        request(for: LoginResponse.self, request: refreshRequest, parameters: refreshRequest.parameters) { loginReposnse in
+            KeychainManager.shared.set(value: loginReposnse.accessToken ?? "", for: KeychainKeys.accessToken)
+            onSucess()
+        } onError: { error in
+            onError(error)
         }
     }
 }
