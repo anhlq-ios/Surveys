@@ -109,6 +109,11 @@ final class LoginViewController: UIViewController, LoginViewable {
         forgotLabel.titleLabel?.font = font
         forgotLabel.setTitleColor(.white.withAlphaComponent(0.5), for: .normal)
         forgotLabel.setTitle(text, for: .normal)
+        forgotLabel.addTarget(self, action: #selector(forgotPasswordTap), for: .touchUpInside)
         return forgotLabel
+    }
+    
+    @objc private func forgotPasswordTap() {
+        presenter.forgotPasswordTap.accept(())
     }
 }

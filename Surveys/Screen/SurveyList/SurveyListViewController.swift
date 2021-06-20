@@ -61,7 +61,7 @@ final class SurveyListViewController: UIViewController, SurveyListViewable {
         
         SkeletonAppearance.default.multilineCornerRadius = 8
 
-        view.backgroundColor = .darkText
+        view.backgroundColor = UIColor(red: 0.08, green: 0.08, blue: 0.1, alpha: 1)
         
         dateLabel.font = UIFont(name: FontName.neuzeitBookStandard, size: 13)
         dateLabel.textColor = .white

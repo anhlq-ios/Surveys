@@ -63,7 +63,7 @@ final class SurveyListPresenter: SurveyListPresentable, SurveyListInteractableLi
             .filter { $0.0.count > $0.1 }
             .map { (surveys, index) -> SurveyViewModel in
                 let survey = surveys[min(index, surveys.count)]
-                return SurveyViewModel(title: survey.title ?? "",
+                return SurveyViewModel(title: (survey.title ?? "").uppercased(),
                                        descipton: survey.description ?? "",
                                        image: survey.coverImageUrl ?? "",
                                        currentPage: index,

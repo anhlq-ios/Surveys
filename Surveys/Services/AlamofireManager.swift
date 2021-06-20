@@ -10,6 +10,12 @@ import Alamofire
 
 protocol AlamofireManagerType {
     func request<RequestType: BaseTarget,
+                 ParamType: Encodable>(request: RequestType,
+                                       parameters: ParamType?,
+                                       onSucess: @escaping (() -> Void),
+                                       onError: @escaping ((Error) -> Void))
+    
+    func request<RequestType: BaseTarget,
                  ParamType: Encodable,
                  Output: Decodable>(for type: Output.Type,
                                     request: RequestType,
@@ -30,6 +36,34 @@ final class AlamofireManager: AlamofireManagerType {
     static let shared = AlamofireManager()
     
     private init() {}
+    
+    func request<RequestType: BaseTarget,
+                 ParamType: Encodable>(request: RequestType,
+                                       parameters: ParamType?,
+                                       onSucess: @escaping (() -> Void),
+                                       onError: @escaping ((Error) -> Void)) {
+        #if DEBUG
+        AlamofireManager.debugRequest(with: request)
+        #endif
+        AF.request(request.fullUrl,
+                   method: request.httpMethod,
+                   parameters: parameters,
+                   encoder: request.parameterEncoder,
+                   headers: request.headers)
+            .validate()
+            .responseData(queue: DispatchQueue.global(qos: .userInitiated),
+                          completionHandler: { response in
+                            switch response.result {
+                            case .success(_):
+                                onSucess()
+                            case .failure(let error):
+                                #if DEBUG
+                                AlamofireManager.debugError(error)
+                                #endif
+                                onError(error)
+                            }
+                          })
+    }
     
     func request<RequestType: BaseTarget,
                  ParamType: Encodable,

@@ -33,6 +33,8 @@ enum Images {
     static let backgroundOverlay = UIImage(named:"background_overlay")
     static let loginBackground = UIImage(named:"login_background_overlay")
     static let arrowRight = UIImage(named: "arrow_right")
+    static let arrowLeft = UIImage(named: "arrow_left")
+    static let iconNotification = UIImage(named: "icon_notification")
 }
 
 enum FontName {

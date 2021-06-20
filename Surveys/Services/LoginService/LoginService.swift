@@ -10,6 +10,7 @@ import Alamofire
 
 protocol LoginServiceType: BaseServiceType {
     func login(email: String, password: String, completion: ((LoginError?) -> Void)?)
+    func resetPassword(email: String, completion: ((LoginError?) -> Void)?)
 }
 
 enum LoginError: Error {
@@ -39,6 +40,24 @@ class LoginService: LoginServiceType {
         let request = LoginTargets.Login(email: email, password: password)
         alamofireManger.request(for: LoginResponse.self, request: request, parameters: request.parameters, onSucess: onSusscess, onError: onError)
     }
+    
+    func resetPassword(email: String, completion: ((LoginError?) -> Void)?) {
+        let onSusscess: (() -> Void) = {
+            completion?(nil)
+        }
+        let onError: ((Error) -> Void) = { error in
+            completion?(.unexpectedError)
+        }
+        let request = LoginTargets.ForgotPassword(email: email)
+        alamofireManger.request(request: request,
+                                parameters: request.parameters,
+                                onSucess: onSusscess,
+                                onError: onError)
+    }
+}
+
+// MARK: - Private functions
+extension LoginService {
     
     private func handleLoginResponse(_ response: LoginResponse, completion: ((LoginError?) -> Void)?) {
         guard let accessToken = response.accessToken, let refreshToken = response.refreshToken else {

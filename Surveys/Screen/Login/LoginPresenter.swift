@@ -12,6 +12,7 @@ protocol LoginPresentable: Presentable {
     var emailRelay: BehaviorRelay<String> { get }
     var passwordRelay: BehaviorRelay<String> { get }
     var loginTapRelay: PublishRelay<Void> { get }
+    var forgotPasswordTap: PublishRelay<Void> { get }
 }
 
 final class LoginPresenter: LoginPresentable, LoginInteractableListener {
@@ -25,6 +26,7 @@ final class LoginPresenter: LoginPresentable, LoginInteractableListener {
     let emailRelay = BehaviorRelay<String>(value: "")
     let passwordRelay = BehaviorRelay<String>(value: "")
     let loginTapRelay = PublishRelay<Void>()
+    let forgotPasswordTap = PublishRelay<Void>()
     
     init(view: LoginViewable, interactor: LoginInteractable, router: LoginRoutable) {
         self.view = view
@@ -47,6 +49,10 @@ final class LoginPresenter: LoginPresentable, LoginInteractableListener {
             .distinctUntilChanged()
             .bind(to: view.isEnableLogin)
             .disposed(by: disposeBag)
+        
+        forgotPasswordTap.subscribe(onNext: { [weak self] in
+            self?.router.routeToForgotPassword()
+        }).disposed(by: disposeBag)
     }
     
     private func configureInteractor() {
@@ -57,10 +63,10 @@ final class LoginPresenter: LoginPresentable, LoginInteractableListener {
                 self?.interactor.login(email: email, password: password)
             }).disposed(by: disposeBag)
         
-        viewDidLoadRelay.subscribe(onNext: { [weak self] in
-            self?.view.isShowLoading.accept(true)
-            self?.interactor.loginAutomated()
-        }).disposed(by: disposeBag)
+//        viewDidLoadRelay.subscribe(onNext: { [weak self] in
+//            self?.view.isShowLoading.accept(true)
+//            self?.interactor.loginAutomated()
+//        }).disposed(by: disposeBag)
     }
 }
 

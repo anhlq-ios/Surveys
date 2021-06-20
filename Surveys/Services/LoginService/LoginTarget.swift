@@ -66,4 +66,41 @@ enum LoginTargets {
 
         let parameterEncoder: ParameterEncoder = URLEncodedFormParameterEncoder(destination: .httpBody)
     }
+    
+    struct ForgotPasswordInput: BaseInput {
+        let email: String
+        
+        enum CodingKeys: String, CodingKey {
+            case user
+            case clientId = "client_id"
+            case clientSecret = "client_secret"
+        }
+        
+        enum UserCodingKeys: String, CodingKey {
+            case email
+        }
+        
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            var userContainer = container.nestedContainer(keyedBy: UserCodingKeys.self, forKey: .user)
+            try userContainer.encode(email, forKey: .email)
+            try container.encode(clientId, forKey: .clientId)
+            try container.encode(clientSecret, forKey: .clientSecret)
+        }
+    }
+    struct ForgotPassword: BaseTarget {
+        
+        typealias T = ForgotPasswordInput
+        var parameters: T? {
+            return ForgotPasswordInput(email: email)
+        }
+        
+        var httpMethod: HTTPMethod = .post
+        
+        var path: String { return "/api/v1/passwords" }
+
+        let parameterEncoder: ParameterEncoder = URLEncodedFormParameterEncoder(destination: .httpBody)
+        
+        let email: String
+    }
 }

@@ -23,6 +23,18 @@ final class VIPERBuilder {
         return view
     }
     
+    static func buildForgotPassword() -> UIViewController {
+        let service = LoginService(alamofireManager: AlamofireManager.shared, keychainManager: KeychainManager.shared)
+        let view = ForgotPasswordViewController.initialInstantiate()
+        let interactor = ForgotPasswordInteractor(loginService: service)
+        let router = ForgotPasswordRouter(view: view)
+        let presenter = ForgotPasswordPresenter(view: view,
+                                            interactor: interactor,
+                                            router: router)
+        interactor.presenter = presenter
+        return view
+    }
+    
     static func buildSplash() -> UIViewController {
         let view = SplashScreenViewController.initialInstantiate()
         let router = SplashScreenRouter(view: view)

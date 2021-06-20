@@ -11,6 +11,7 @@ import UIKit
 protocol LoginRoutable: Routable {
     func showAlert(title: String?, message: String?)
     func routeToSurveyList()
+    func routeToForgotPassword()
 }
 
 final class LoginRouter: LoginRoutable {
@@ -36,6 +37,13 @@ final class LoginRouter: LoginRoutable {
             let surveyList = VIPERBuilder.buildSurveyList()
             let navigationController = UINavigationController(rootViewController: surveyList)
             UIApplication.shared.keyWindow?.rootViewController = navigationController
+        }
+    }
+    
+    func routeToForgotPassword() {
+        DispatchQueue.main.async { [weak view] in
+            let forgotPassword = VIPERBuilder.buildForgotPassword()
+            view?.push(forgotPassword, animated: true)
         }
     }
 }

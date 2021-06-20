@@ -26,6 +26,12 @@
 		0F9B252A267DDE1A00242CFC /* SurveyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B2529267DDE1A00242CFC /* SurveyService.swift */; };
 		0F9B252D267E4D9D00242CFC /* SurveyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B252C267E4D9D00242CFC /* SurveyDetailViewController.swift */; };
 		0F9B252F267E4DA900242CFC /* SurveyDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9B252E267E4DA900242CFC /* SurveyDetailViewController.storyboard */; };
+		0FA6B043267F396B0013EDB2 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6B042267F396B0013EDB2 /* ForgotPasswordViewController.swift */; };
+		0FA6B045267F39710013EDB2 /* ForgotPasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA6B044267F39710013EDB2 /* ForgotPasswordViewController.storyboard */; };
+		0FA6B047267F39820013EDB2 /* ForgotPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6B046267F39820013EDB2 /* ForgotPasswordRouter.swift */; };
+		0FA6B049267F39890013EDB2 /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6B048267F39890013EDB2 /* ForgotPasswordPresenter.swift */; };
+		0FA6B04B267F39920013EDB2 /* ForgotPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6B04A267F39920013EDB2 /* ForgotPasswordInteractor.swift */; };
+		0FA6B04F267F4C010013EDB2 /* SnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6B04E267F4C010013EDB2 /* SnackBar.swift */; };
 		0FA776E42678F3E100ECA32A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA776E32678F3E100ECA32A /* AppDelegate.swift */; };
 		0FA776ED2678F3E400ECA32A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FA776EC2678F3E400ECA32A /* Assets.xcassets */; };
 		0FA776FB2678F3E400ECA32A /* SurveysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA776FA2678F3E400ECA32A /* SurveysTests.swift */; };
@@ -83,6 +89,12 @@
 		0F9B2529267DDE1A00242CFC /* SurveyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyService.swift; sourceTree = "<group>"; };
 		0F9B252C267E4D9D00242CFC /* SurveyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyDetailViewController.swift; sourceTree = "<group>"; };
 		0F9B252E267E4DA900242CFC /* SurveyDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SurveyDetailViewController.storyboard; sourceTree = "<group>"; };
+		0FA6B042267F396B0013EDB2 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		0FA6B044267F39710013EDB2 /* ForgotPasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPasswordViewController.storyboard; sourceTree = "<group>"; };
+		0FA6B046267F39820013EDB2 /* ForgotPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRouter.swift; sourceTree = "<group>"; };
+		0FA6B048267F39890013EDB2 /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
+		0FA6B04A267F39920013EDB2 /* ForgotPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInteractor.swift; sourceTree = "<group>"; };
+		0FA6B04E267F4C010013EDB2 /* SnackBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBar.swift; sourceTree = "<group>"; };
 		0FA776E02678F3E100ECA32A /* Surveys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surveys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA776E32678F3E100ECA32A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FA776EC2678F3E400ECA32A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +202,26 @@
 			path = SurveyDetail;
 			sourceTree = "<group>";
 		};
+		0FA6B041267F395B0013EDB2 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				0FA6B04A267F39920013EDB2 /* ForgotPasswordInteractor.swift */,
+				0FA6B048267F39890013EDB2 /* ForgotPasswordPresenter.swift */,
+				0FA6B046267F39820013EDB2 /* ForgotPasswordRouter.swift */,
+				0FA6B044267F39710013EDB2 /* ForgotPasswordViewController.storyboard */,
+				0FA6B042267F396B0013EDB2 /* ForgotPasswordViewController.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		0FA6B04D267F4BD20013EDB2 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				0FA6B04E267F4C010013EDB2 /* SnackBar.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		0FA776D72678F3E100ECA32A = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +279,7 @@
 		0FA777142678FA9200ECA32A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0FA6B04D267F4BD20013EDB2 /* CustomView */,
 				0F735721267A3D6100872B13 /* Constant.swift */,
 				0F735720267A3D6100872B13 /* ModuleImport.swift */,
 				0F735722267A3D6100872B13 /* VIPERBuilder.swift */,
@@ -270,6 +303,7 @@
 		0FA777162678FA9F00ECA32A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				0FA6B041267F395B0013EDB2 /* ForgotPassword */,
 				0F9B252B267E4D8100242CFC /* SurveyDetail */,
 				0F9B251B267DA0C400242CFC /* SurveyList */,
 				0FE248A7267BA85100480240 /* SplashScreen */,
@@ -452,6 +486,7 @@
 			files = (
 				0FCA4B3A267CF25A007B36AE /* NeuzeitSLTStd-Book.otf in Resources */,
 				0FE248A6267BA83100480240 /* LaunchScreen.storyboard in Resources */,
+				0FA6B045267F39710013EDB2 /* ForgotPasswordViewController.storyboard in Resources */,
 				0FCA4B3E267CF3FE007B36AE /* NeuzeitSLTStd-Regular.ttf in Resources */,
 				0F9B251D267DA0D700242CFC /* SurveyListViewController.storyboard in Resources */,
 				0F9B252F267E4DA900242CFC /* SurveyDetailViewController.storyboard in Resources */,
@@ -540,8 +575,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA6B043267F396B0013EDB2 /* ForgotPasswordViewController.swift in Sources */,
 				0F9B2525267DB27100242CFC /* SurveyListRouter.swift in Sources */,
 				0F49D242267A44D500F87DB2 /* BaseTarget.swift in Sources */,
+				0FA6B04B267F39920013EDB2 /* ForgotPasswordInteractor.swift in Sources */,
 				0F735725267A3D6100872B13 /* VIPERBuilder.swift in Sources */,
 				0F9B2528267DDE1200242CFC /* SurveyTarget.swift in Sources */,
 				0FE248AB267BA8B000480240 /* SplashScreenViewController.swift in Sources */,
@@ -551,6 +588,7 @@
 				0F9B2523267DB26600242CFC /* SurveyListInteractor.swift in Sources */,
 				0F49D240267A416E00F87DB2 /* Survey.swift in Sources */,
 				0F49D247267A516B00F87DB2 /* LoginTarget.swift in Sources */,
+				0FA6B049267F39890013EDB2 /* ForgotPasswordPresenter.swift in Sources */,
 				0F49D244267A508300F87DB2 /* LoginService.swift in Sources */,
 				0FE24890267B8E1E00480240 /* LoginResponse.swift in Sources */,
 				0FE248B1267BB0CD00480240 /* Presentable.swift in Sources */,
@@ -568,8 +606,10 @@
 				0F735723267A3D6100872B13 /* ModuleImport.swift in Sources */,
 				0F9B251F267DA0E600242CFC /* SurveyListViewController.swift in Sources */,
 				0FE248B4267BB0CD00480240 /* Viewable.swift in Sources */,
+				0FA6B047267F39820013EDB2 /* ForgotPasswordRouter.swift in Sources */,
 				0F9B252A267DDE1A00242CFC /* SurveyService.swift in Sources */,
 				0FE248B6267BB1FD00480240 /* SplashScreenPresenter.swift in Sources */,
+				0FA6B04F267F4C010013EDB2 /* SnackBar.swift in Sources */,
 				0FA776E42678F3E100ECA32A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
