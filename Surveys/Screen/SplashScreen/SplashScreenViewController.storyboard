@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Splash Screen View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="SplashScreenViewController" customModule="Surveys" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_image" translatesAutoresizingMaskIntoConstraints="NO" id="ugd-lJ-bk4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_overlay" translatesAutoresizingMaskIntoConstraints="NO" id="409-wT-MRG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="XDa-ht-Mih">
+                                <rect key="frame" x="106.5" y="424" width="201" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="C84-Kc-Bup"/>
+                                    <constraint firstAttribute="width" constant="201" id="a56-a6-Sa5"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ugd-lJ-bk4" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="3pE-vw-6xa"/>
+                            <constraint firstItem="409-wT-MRG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="5PP-64-yOm"/>
+                            <constraint firstItem="409-wT-MRG" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="BnA-kw-nbN"/>
+                            <constraint firstItem="XDa-ht-Mih" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Fbv-vt-spo"/>
+                            <constraint firstItem="ugd-lJ-bk4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GEe-9C-0jy"/>
+                            <constraint firstItem="409-wT-MRG" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Rjo-lR-87N"/>
+                            <constraint firstItem="XDa-ht-Mih" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="blr-gy-GGV"/>
+                            <constraint firstItem="ugd-lJ-bk4" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="fei-iR-ygY"/>
+                            <constraint firstAttribute="bottom" secondItem="409-wT-MRG" secondAttribute="bottom" id="jMx-5k-Ixe"/>
+                            <constraint firstAttribute="bottom" secondItem="ugd-lJ-bk4" secondAttribute="bottom" id="yrM-4b-Odr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logoImage" destination="XDa-ht-Mih" id="uou-Bw-EuB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-67" y="96"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background_image" width="375" height="812"/>
+        <image name="background_overlay" width="375" height="812"/>
+        <image name="logo" width="101" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
