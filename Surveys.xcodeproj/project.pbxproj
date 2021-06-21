@@ -11,12 +11,21 @@
 		0F49D242267A44D500F87DB2 /* BaseTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F49D241267A44D500F87DB2 /* BaseTarget.swift */; };
 		0F49D244267A508300F87DB2 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F49D243267A508300F87DB2 /* LoginService.swift */; };
 		0F49D247267A516B00F87DB2 /* LoginTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F49D246267A516B00F87DB2 /* LoginTarget.swift */; };
+		0F57ABCA2680E9CE00E093B4 /* MockLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57ABC92680E9CE00E093B4 /* MockLoginRouter.swift */; };
+		0F57ABCC2680E9D700E093B4 /* MockLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57ABCB2680E9D700E093B4 /* MockLoginInteractor.swift */; };
+		0F57ABCE2680E9DE00E093B4 /* MockLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57ABCD2680E9DE00E093B4 /* MockLoginView.swift */; };
 		0F73571A267A3CDB00872B13 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F735719267A3CDB00872B13 /* LoginViewController.swift */; };
 		0F73571C267A3CE800872B13 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F73571B267A3CE800872B13 /* LoginViewController.storyboard */; };
 		0F735723267A3D6100872B13 /* ModuleImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F735720267A3D6100872B13 /* ModuleImport.swift */; };
 		0F735724267A3D6100872B13 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F735721267A3D6100872B13 /* Constant.swift */; };
 		0F735725267A3D6100872B13 /* VIPERBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F735722267A3D6100872B13 /* VIPERBuilder.swift */; };
 		0F735727267A3D8000872B13 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F735726267A3D8000872B13 /* UIViewController+Extension.swift */; };
+		0F9082A52680EC3300992949 /* MockLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9082A42680EC3200992949 /* MockLoginService.swift */; };
+		0F9082A92680EFA300992949 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9082A82680EFA300992949 /* AlamofireManager.swift */; };
+		0F9082AD2680F57F00992949 /* MockSurveyListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9082AC2680F57F00992949 /* MockSurveyListInteractor.swift */; };
+		0F9082AF2680F58700992949 /* MockSurveyListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9082AE2680F58700992949 /* MockSurveyListRouter.swift */; };
+		0F9082B12680F58D00992949 /* MockSurveyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9082B02680F58D00992949 /* MockSurveyListView.swift */; };
+		0F9082B32680F5A400992949 /* SurveyListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9082B22680F5A400992949 /* SurveyListPresenterTests.swift */; };
 		0F9B251D267DA0D700242CFC /* SurveyListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9B251C267DA0D700242CFC /* SurveyListViewController.storyboard */; };
 		0F9B251F267DA0E600242CFC /* SurveyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B251E267DA0E600242CFC /* SurveyListViewController.swift */; };
 		0F9B2521267DB25B00242CFC /* SurveyListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B2520267DB25B00242CFC /* SurveyListPresenter.swift */; };
@@ -34,7 +43,7 @@
 		0FA6B04F267F4C010013EDB2 /* SnackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6B04E267F4C010013EDB2 /* SnackBar.swift */; };
 		0FA776E42678F3E100ECA32A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA776E32678F3E100ECA32A /* AppDelegate.swift */; };
 		0FA776ED2678F3E400ECA32A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FA776EC2678F3E400ECA32A /* Assets.xcassets */; };
-		0FA776FB2678F3E400ECA32A /* SurveysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA776FA2678F3E400ECA32A /* SurveysTests.swift */; };
+		0FA776FB2678F3E400ECA32A /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA776FA2678F3E400ECA32A /* LoginPresenterTests.swift */; };
 		0FCA4B31267CA3E9007B36AE /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4B30267CA3E9007B36AE /* KeychainManager.swift */; };
 		0FCA4B33267CED7D007B36AE /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4B32267CED7D007B36AE /* LoginPresenter.swift */; };
 		0FCA4B35267CED89007B36AE /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA4B34267CED89007B36AE /* LoginInteractor.swift */; };
@@ -42,7 +51,6 @@
 		0FCA4B3A267CF25A007B36AE /* NeuzeitSLTStd-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4B39267CF25A007B36AE /* NeuzeitSLTStd-Book.otf */; };
 		0FCA4B3C267CF3EB007B36AE /* NeuzeitSLTStd-BookHeavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4B3B267CF3EB007B36AE /* NeuzeitSLTStd-BookHeavy.otf */; };
 		0FCA4B3E267CF3FE007B36AE /* NeuzeitSLTStd-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA4B3D267CF3FE007B36AE /* NeuzeitSLTStd-Regular.ttf */; };
-		0FE2488C267B4B2400480240 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2488B267B4B2400480240 /* AlamofireManager.swift */; };
 		0FE2488E267B857200480240 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2488D267B857200480240 /* BaseService.swift */; };
 		0FE24890267B8E1E00480240 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2488F267B8E1E00480240 /* LoginResponse.swift */; };
 		0FE248A6267BA83100480240 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FE248A4267BA83100480240 /* LaunchScreen.storyboard */; };
@@ -74,12 +82,21 @@
 		0F49D241267A44D500F87DB2 /* BaseTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTarget.swift; sourceTree = "<group>"; };
 		0F49D243267A508300F87DB2 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		0F49D246267A516B00F87DB2 /* LoginTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTarget.swift; sourceTree = "<group>"; };
+		0F57ABC92680E9CE00E093B4 /* MockLoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginRouter.swift; sourceTree = "<group>"; };
+		0F57ABCB2680E9D700E093B4 /* MockLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginInteractor.swift; sourceTree = "<group>"; };
+		0F57ABCD2680E9DE00E093B4 /* MockLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginView.swift; sourceTree = "<group>"; };
 		0F735719267A3CDB00872B13 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0F73571B267A3CE800872B13 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		0F735720267A3D6100872B13 /* ModuleImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleImport.swift; sourceTree = "<group>"; };
 		0F735721267A3D6100872B13 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		0F735722267A3D6100872B13 /* VIPERBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VIPERBuilder.swift; sourceTree = "<group>"; };
 		0F735726267A3D8000872B13 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		0F9082A42680EC3200992949 /* MockLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginService.swift; sourceTree = "<group>"; };
+		0F9082A82680EFA300992949 /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
+		0F9082AC2680F57F00992949 /* MockSurveyListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSurveyListInteractor.swift; sourceTree = "<group>"; };
+		0F9082AE2680F58700992949 /* MockSurveyListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSurveyListRouter.swift; sourceTree = "<group>"; };
+		0F9082B02680F58D00992949 /* MockSurveyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSurveyListView.swift; sourceTree = "<group>"; };
+		0F9082B22680F5A400992949 /* SurveyListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListPresenterTests.swift; sourceTree = "<group>"; };
 		0F9B251C267DA0D700242CFC /* SurveyListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SurveyListViewController.storyboard; sourceTree = "<group>"; };
 		0F9B251E267DA0E600242CFC /* SurveyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListViewController.swift; sourceTree = "<group>"; };
 		0F9B2520267DB25B00242CFC /* SurveyListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListPresenter.swift; sourceTree = "<group>"; };
@@ -100,7 +117,7 @@
 		0FA776EC2678F3E400ECA32A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FA776F12678F3E400ECA32A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FA776F62678F3E400ECA32A /* SurveysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurveysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FA776FA2678F3E400ECA32A /* SurveysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveysTests.swift; sourceTree = "<group>"; };
+		0FA776FA2678F3E400ECA32A /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
 		0FA776FC2678F3E400ECA32A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FCA4B30267CA3E9007B36AE /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		0FCA4B32267CED7D007B36AE /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -109,7 +126,6 @@
 		0FCA4B39267CF25A007B36AE /* NeuzeitSLTStd-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeuzeitSLTStd-Book.otf"; sourceTree = "<group>"; };
 		0FCA4B3B267CF3EB007B36AE /* NeuzeitSLTStd-BookHeavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeuzeitSLTStd-BookHeavy.otf"; sourceTree = "<group>"; };
 		0FCA4B3D267CF3FE007B36AE /* NeuzeitSLTStd-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeuzeitSLTStd-Regular.ttf"; sourceTree = "<group>"; };
-		0FE2488B267B4B2400480240 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		0FE2488D267B857200480240 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		0FE2488F267B8E1E00480240 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		0FE248A5267BA83100480240 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -160,6 +176,17 @@
 			path = LoginService;
 			sourceTree = "<group>";
 		};
+		0F57ABC82680E9AA00E093B4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0F57ABCB2680E9D700E093B4 /* MockLoginInteractor.swift */,
+				0F57ABC92680E9CE00E093B4 /* MockLoginRouter.swift */,
+				0F57ABCD2680E9DE00E093B4 /* MockLoginView.swift */,
+				0FA776FA2678F3E400ECA32A /* LoginPresenterTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		0F735718267A39E800872B13 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +197,25 @@
 				0FCA4B36267CED97007B36AE /* LoginRouter.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		0F9082A32680EC2600992949 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0F9082A42680EC3200992949 /* MockLoginService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0F9082AA2680F53C00992949 /* SurveyList */ = {
+			isa = PBXGroup;
+			children = (
+				0F9082AC2680F57F00992949 /* MockSurveyListInteractor.swift */,
+				0F9082AE2680F58700992949 /* MockSurveyListRouter.swift */,
+				0F9082B02680F58D00992949 /* MockSurveyListView.swift */,
+				0F9082B22680F5A400992949 /* SurveyListPresenterTests.swift */,
+			);
+			path = SurveyList;
 			sourceTree = "<group>";
 		};
 		0F9B251B267DA0C400242CFC /* SurveyList */ = {
@@ -262,8 +308,10 @@
 		0FA776F92678F3E400ECA32A /* SurveysTests */ = {
 			isa = PBXGroup;
 			children = (
-				0FA776FA2678F3E400ECA32A /* SurveysTests.swift */,
 				0FA776FC2678F3E400ECA32A /* Info.plist */,
+				0F57ABC82680E9AA00E093B4 /* Login */,
+				0F9082A32680EC2600992949 /* Services */,
+				0F9082AA2680F53C00992949 /* SurveyList */,
 			);
 			path = SurveysTests;
 			sourceTree = "<group>";
@@ -291,7 +339,7 @@
 		0FA777152678FA9A00ECA32A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				0FE2488B267B4B2400480240 /* AlamofireManager.swift */,
+				0F9082A82680EFA300992949 /* AlamofireManager.swift */,
 				0FE2488D267B857200480240 /* BaseService.swift */,
 				0F49D241267A44D500F87DB2 /* BaseTarget.swift */,
 				0F49D245267A515F00F87DB2 /* LoginService */,
@@ -600,10 +648,10 @@
 				0FE248B3267BB0CD00480240 /* Routable.swift in Sources */,
 				0FE248B2267BB0CD00480240 /* Interactable.swift in Sources */,
 				0FE2488E267B857200480240 /* BaseService.swift in Sources */,
-				0FE2488C267B4B2400480240 /* AlamofireManager.swift in Sources */,
 				0F9B252D267E4D9D00242CFC /* SurveyDetailViewController.swift in Sources */,
 				0FCA4B31267CA3E9007B36AE /* KeychainManager.swift in Sources */,
 				0F735723267A3D6100872B13 /* ModuleImport.swift in Sources */,
+				0F9082A92680EFA300992949 /* AlamofireManager.swift in Sources */,
 				0F9B251F267DA0E600242CFC /* SurveyListViewController.swift in Sources */,
 				0FE248B4267BB0CD00480240 /* Viewable.swift in Sources */,
 				0FA6B047267F39820013EDB2 /* ForgotPasswordRouter.swift in Sources */,
@@ -618,7 +666,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FA776FB2678F3E400ECA32A /* SurveysTests.swift in Sources */,
+				0F9082AF2680F58700992949 /* MockSurveyListRouter.swift in Sources */,
+				0F9082AD2680F57F00992949 /* MockSurveyListInteractor.swift in Sources */,
+				0F9082B12680F58D00992949 /* MockSurveyListView.swift in Sources */,
+				0F57ABCE2680E9DE00E093B4 /* MockLoginView.swift in Sources */,
+				0F9082A52680EC3300992949 /* MockLoginService.swift in Sources */,
+				0F57ABCA2680E9CE00E093B4 /* MockLoginRouter.swift in Sources */,
+				0F9082B32680F5A400992949 /* SurveyListPresenterTests.swift in Sources */,
+				0F57ABCC2680E9D700E093B4 /* MockLoginInteractor.swift in Sources */,
+				0FA776FB2678F3E400ECA32A /* LoginPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
