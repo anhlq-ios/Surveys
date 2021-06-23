@@ -18,8 +18,12 @@ default_platform(:ios)
 platform :ios do
   desc "Run the Unit test"
   lane :tests do
-  run_tests(workspace: "Surveys.xcworkspace",
-            devices: ["iPhone 12 Pro Max"],
-            scheme: "SurveysTests")
+  run_tests(workspace: 'Surveys.xcworkspace',
+            device: 'iPhone 12 Pro Max',
+            scheme: 'SurveysTests',
+	    buildlog_path: './fastlane/fastlane-buildlog',
+ 	    derived_data_path: '~/Library/Developer/Xcode/DerivedData',
+	    ensure_devices_found: true,
+	    open_report: true)
   end
 end
