@@ -56,7 +56,7 @@ enum LoginTargets {
             return ["grant_type": "refresh_token",
                     "refresh_token": KeychainManager.shared.getValue(for: KeychainKeys.refreshToken) ?? "",
                     "client_id": Constant.clientID,
-                    "client_secrect": Constant.clientSecret
+                    "client_secret": Constant.clientSecret
             ]
         }
         

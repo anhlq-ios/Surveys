@@ -8,6 +8,13 @@
 import Foundation
 import Alamofire
 
+enum ServiceEror: Int, Error {
+    case invalidClient = 400
+    case invalidToken = 401
+    case invalidGrant = 403
+    case invalidParam = 404
+}
+
 protocol AlamofireManagerType {
     func request<RequestType: BaseTarget,
                  ParamType: Encodable>(request: RequestType,
@@ -34,6 +41,10 @@ protocol AlamofireManagerType {
 
 final class AlamofireManager: AlamofireManagerType {
     static let shared = AlamofireManager()
+    
+    private let retryLimit = 5
+    private let invalidTokenLimit = 10
+    private var invalidTokenCount = 0
     
     private init() {}
     
@@ -114,7 +125,8 @@ final class AlamofireManager: AlamofireManagerType {
                    method: request.httpMethod,
                    parameters: parameters,
                    encoder: request.parameterEncoder,
-                   headers: request.headers)
+                   headers: request.headers,
+                   interceptor: self)
             .cacheResponse(using: ResponseCacher.cache)
             .validate()
             .responseData(queue: DispatchQueue.global(qos: .userInitiated),
@@ -132,10 +144,10 @@ final class AlamofireManager: AlamofireManagerType {
                                 AlamofireManager.debugError(error)
                                 #endif
                                 
-                                if error.responseCode == 401 {
+                                if response.response?.statusCode == ServiceEror.invalidToken.rawValue {
                                     /// Handle automated update access token here.
                                     self?.refreshTokenRequest(onSucess: {
-                                        self?.request(for: type, request: request, parameters: parameters, onSucess: onSucess, onError: onError)
+                                        self?.authenticateRequest(for: type, request: request, parameters: parameters, onSucess: onSucess, onError: onError)
                                     }, onError: { refreshTokenError in
                                         #if DEBUG
                                         AlamofireManager.debugError(refreshTokenError)
@@ -173,11 +185,44 @@ extension AlamofireManager {
     
     private func refreshTokenRequest(onSucess: @escaping () -> Void, onError: @escaping  ((Error) -> Void)) {
         let refreshRequest = LoginTargets.RefreshToken()
-        request(for: LoginResponse.self, request: refreshRequest, parameters: refreshRequest.parameters) { loginReposnse in
-            KeychainManager.shared.set(value: loginReposnse.accessToken ?? "", for: KeychainKeys.accessToken)
+        request(for: LoginResponse.self, request: refreshRequest, parameters: refreshRequest.parameters) { [weak self] loginReposnse in
+            self?.updateNewAccessToken(accessToken: loginReposnse.accessToken ?? "")
+            self?.invalidTokenCount = 0
             onSucess()
-        } onError: { error in
+        } onError: { [weak self] error in
+            self?.invalidTokenCount = 0
             onError(error)
+        }
+    }
+    
+    private func updateNewAccessToken(accessToken: String) {
+        print(">>>: refresh token after \(invalidTokenCount) times invalid token")
+        KeychainManager.shared.set(value: accessToken, for: KeychainKeys.accessToken)
+    }
+}
+
+// MARK: - RequestRetrier
+extension AlamofireManager: RequestInterceptor {
+    func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
+        print(">>> retryCount: \(request.retryCount)")
+        if request.retryCount < retryLimit,
+           shouldRetry(response: request.response, error: error) {
+            completion(.retry)
+        } else {
+            completion(.doNotRetryWithError(error))
+        }
+    }
+    
+    func shouldRetry(response: HTTPURLResponse?, error: Error) -> Bool {
+        guard response?.statusCode == ServiceEror.invalidToken.rawValue else {
+            return true
+        }
+        print(">>> invalidTokenCount: \(invalidTokenCount)")
+        if invalidTokenCount < invalidTokenLimit {
+            invalidTokenCount += 1
+            return true
+        } else {
+            return false
         }
     }
 }
