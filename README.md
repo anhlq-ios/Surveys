@@ -40,8 +40,9 @@ Below is the list of third-party libraries that I use in the project:
 - **KeychainAccess**: a simple Swift wrapper for Keychain that works on iOS and OS X. Makes using Keychain APIs extremely easy and much more palatable to use in Swift. Use to get/set credential informations to Keychain.
 
 ## **4. Build the project on local**
-After cloning the repo, please run `pod install` from your terminal then open `Surveys.xcworkspace` and try to build the project using Xcode 12+.
+- After cloning the repo, please run `pod install` from your terminal then open `Surveys.xcworkspace` and try to build the project using Xcode 12+.
 It should work without any additional steps.
+- Go to the source directory, run `fastlane test` or `bundle exec fastlane tests` to run Unit Tests. It should show a html page contains the test result.
 
 ## **5. Checklist**
 - [x] Programming language: Swift
@@ -59,5 +60,7 @@ It should work without any additional steps.
 - [x] Caching handling
 
 - [x] Automatic handle expires token
+
+- [x] Integrated Fastlane
 
 Thanks and have a nice day!
